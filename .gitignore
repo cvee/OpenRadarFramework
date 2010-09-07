@@ -1,0 +1,8 @@
+# Ignore Xcode Files
+build/*
+*.pbxuser
+*.mode1v3
+
+# Ignore Mac OS X Files
+.DS_Store
+
