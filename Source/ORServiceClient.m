@@ -139,7 +139,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[ORServiceClient connectionDidFinishLoading:]");
+    NSLog(@"[%@ connectionDidFinishLoading:]", [self className]);
 #endif
 
     LPServiceRequest *serviceRequest = [self requestForConnection:connection];

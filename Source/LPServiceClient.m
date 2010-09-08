@@ -81,7 +81,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (NSURLConnection *)createConnectionWithRequest:(LPServiceRequest *)request
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient createConnectionWithRequest:target:selector:]");
+    NSLog(@"[%@ createConnectionWithRequest:target:selector:]", [self className]);
 #endif
 
     NSURLConnection *connection = [[[NSURLConnection alloc]
@@ -118,7 +118,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient didFailWithError:]");
+    NSLog(@"[%@ didFailWithError:]", [self className]);
 #endif
 
     NSString *errorString = nil;
@@ -156,7 +156,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient didReceiveData:]");
+    NSLog(@"[%@ didReceiveData:]", [self className]);
 #endif
 
     LPServiceRequest *serviceRequest = [self requestForConnection:connection];
@@ -173,7 +173,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient didReceiveResponse:]");
+    NSLog(@"[%@ didReceiveResponse:]", [self className]);
 #endif
 
     LPServiceRequest *serviceRequest = [self requestForConnection:connection];
@@ -197,7 +197,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse;
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient connection:willSendRequest:redirectResponse:]");
+    NSLog(@"[%@ connection:willSendRequest:redirectResponse:]", [self className]);
 #endif
 
     // If the response did not cause a redirect, return the original request.
@@ -235,7 +235,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient connectionDidFinishLoading:]");
+    NSLog(@"[%@ connectionDidFinishLoading:]", [self className]);
 #endif
 
     [self closeConnection:connection];
@@ -270,7 +270,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (NSURLConnection *)createConnectionWithURL:(NSURL *)requestURL target:(id)aTarget selector:(SEL)aSelector
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient createConnectionWithURL:target:selector:]");
+    NSLog(@"[%@ createConnectionWithURL:target:selector:]", [self className]);
 #endif
 
     LPServiceRequest *serviceRequest = [[LPServiceRequest alloc]
@@ -296,7 +296,7 @@ NSString *kLPServiceClientTarget = @"target";
 - (LPServiceRequest *)requestForConnection:(NSURLConnection *)connection
 {
 #ifdef CONFIGURATION_DEBUG
-    NSLog(@"[LPServiceClient requestForConnection:]");
+    NSLog(@"[%@ requestForConnection:]", [self className]);
 #endif
 
     id object = [connectionDictionary objectForKey:[NSString stringWithFormat:@"%lu", [connection hash]]];
