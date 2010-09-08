@@ -1,0 +1,11 @@
+﻿/* Localized versions of Info.plist keys */
+
+/* Bundle name (as appears on the menu bar) */
+CFBundleName = "OpenRadar";
+
+/* Version string for the Get Info window */
+/* CFBundleShortVersionString, NSHumanReadableCopyright (minus the trailing ", All Rights Reserved.") */
+CFBundleGetInfoString = "0.1.0, Copyright © 2010 Luna Park";
+
+/* Copyright notice for the About panel */
+NSHumanReadableCopyright = "Copyright © 2010 Luna Park, All Rights Reserved.";
