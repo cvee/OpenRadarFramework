@@ -43,8 +43,6 @@
 
 /**
  * @brief Class representation of a comment.
- *
- *
  */
 @interface ORComment : NSObject <NSCoding, NSCopying> {
 @private

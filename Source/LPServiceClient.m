@@ -267,14 +267,14 @@ NSString *kLPServiceClientTarget = @"target";
     return self;
 }
 
-- (NSURLConnection *)createConnectionWithURL:(NSURL *)requestURL target:(id)aTarget selector:(SEL)aSelector
+- (NSURLConnection *)createConnectionWithURL:(NSURL *)aRequestURL target:(id)aTarget selector:(SEL)aSelector
 {
 #ifdef CONFIGURATION_DEBUG
     NSLog(@"[%@ createConnectionWithURL:target:selector:]", [self className]);
 #endif
 
     LPServiceRequest *serviceRequest = [[LPServiceRequest alloc]
-        initWithURL:requestURL target:aTarget selector:aSelector];
+        initWithURL:aRequestURL target:aTarget selector:aSelector];
 
     return [self createConnectionWithRequest:serviceRequest];
 }

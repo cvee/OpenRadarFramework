@@ -42,26 +42,67 @@
 @class LPServiceRequest;
 @protocol LPServiceClientDelegate;
 
+/**
+ * @brief Client for initiating requests to a web service.
+ *
+ *
+ */
 @interface LPServiceClient : NSObject {
     NSMutableDictionary *connectionDictionary;
     id delegate;
 }
 
 // Properties
+
+/**
+ *
+ */
 @property (nonatomic, assign) id delegate;
 
 // Initialization
-- (NSURLConnection *)createConnectionWithURL:(NSURL *)requestURL target:(id)aTarget selector:(SEL)aSelector;
+
+/**
+ * @brief Creates a new connection.
+ *
+ * @param aRequestURL The request URL.
+ * @param aTarget The target.
+ * @param aSelector The selector.
+ */
+- (NSURLConnection *)createConnectionWithURL:(NSURL *)aRequestURL target:(id)aTarget selector:(SEL)aSelector;
 
 // Accessors
+
+/**
+ * @brief Returns the service request instance associated with the specified connection instance.
+ *
+ * @param connection the connection.
+ * @return the service request instance.
+ */
 - (LPServiceRequest *)requestForConnection:(NSURLConnection *)connection;
 
 @end
 
+/**
+ * @brief Allows an object to process responses from requests made using a LPServiceClient object.
+ */
 @protocol LPServiceClientDelegate <NSObject>
 
 @optional
+
+/**
+ * @brief Sent when a client request has successfully finished.
+ *
+ * @param serviceClient The client instance that initiated the request.
+ * @param result The result of client request.
+ */
 - (void)serviceClient:(LPServiceClient *)serviceClient didFinishWithResult:(NSDictionary *)result;
+
+/**
+ * @brief Sent when a client request has failed.
+ *
+ * @param serviceClient The client instance that initiated the request.
+ * @param error An error object containing details of why the client request failed.
+ */
 - (void)serviceClient:(LPServiceClient *)serviceClient didFailWithError:(NSError *)error;
 
 @end
