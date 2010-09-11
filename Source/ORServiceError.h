@@ -37,7 +37,9 @@
 
 @class NSString;
 
-// Codes
+/**
+ * Error codes.
+ */
 enum
 {
     ORServiceClientErrorCodeUnknown = -1,

@@ -39,22 +39,85 @@
 @class ORRadar;
 @protocol ORServiceClientDelegate;
 
+/**
+ * @brief Client for initiating web service requests.
+ *
+ *
+ */
 @interface ORServiceClient : LPServiceClient {}
 
-// Web Services
 - (void)addRadar:(ORRadar *)aRadar;
-- (void)commentsForPage:(NSUInteger)page;
-- (void)radarsForPage:(NSUInteger)page;
-- (void)radarNumbersForPage:(NSUInteger)page;
+
+/**
+ * @brief Retrieves a list of comments for the specified page.
+ *
+ * @param aPage the page number.
+ */
+- (void)commentsForPage:(NSUInteger)aPage;
+
+/**
+ * @brief Retrieves a list of radars for the specified page.
+ *
+ * @param aPage the page number.
+ */
+- (void)radarsForPage:(NSUInteger)aPage;
+
+/**
+ * @brief Retrieves a list of radar numbers for the specified page.
+ *
+ * @param aPage the page number.
+ */
+- (void)radarNumbersForPage:(NSUInteger)aPage;
+
+/**
+ * @brief
+ *
+ *
+ */
 - (void)test;
 
 @end
 
+/**
+ * @brief Delegate for responding to web service responses.
+ *
+ *
+ */
 @protocol ORServiceClientDelegate <LPServiceClientDelegate>
 
 @optional
+
+/**
+ * @method serviceClient:didFinishWithComments:
+ * @brief
+ *
+ *
+ *
+ * @param serviceClient the ORServiceClient instance that initiated the request.
+ * @param comments an NSArray of ORComment objects.
+ */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithComments:(NSArray *)comments;
+
+/**
+ * @method serviceClient:didFinishWithRadars:
+ * @brief
+ *
+ *
+ *
+ * @param serviceClient the ORServiceClient instance that initiated the request.
+ * @param radars an NSArray of ORRadar objects.
+ */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadars:(NSArray *)radars;
+
+/**
+ * @method serviceClient:didFinishWithRadarNumbers:
+ * @brief
+ *
+ *
+ *
+ * @param serviceClient the ORServiceClient instance that initiated the request.
+ * @param radarNumbers an NSArray of NSNumber objects.
+ */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)radarNumbers;
 
 @end

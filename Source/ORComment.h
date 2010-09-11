@@ -41,6 +41,11 @@
 @class NSNumber;
 @class NSString;
 
+/**
+ * @brief Class representation of a comment.
+ *
+ *
+ */
 @interface ORComment : NSObject <NSCoding, NSCopying> {
 @private
     NSString *body;

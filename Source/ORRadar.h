@@ -41,6 +41,11 @@
 @class NSNumber;
 @class NString;
 
+/**
+ * @brief Class representation of a radar.
+ *
+ *
+ */
 @interface ORRadar : NSObject <NSCoding, NSCopying> {
 @private
     NSString *classification;
