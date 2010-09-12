@@ -30,6 +30,7 @@
 //
 
 #import "ORServiceError.h"
+#import <Foundation/NSString.h>
 
 
 #pragma mark -
