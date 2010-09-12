@@ -70,6 +70,15 @@
  */
 - (NSURLConnection *)createConnectionWithURL:(NSURL *)aRequestURL target:(id)aTarget selector:(SEL)aSelector;
 
+/**
+ * @brief Creates a new connection.
+ *
+ * @param aURLRequest The URL request.
+ * @param aTarget The target.
+ * @param aSelector The selector.
+ */
+- (NSURLConnection *)createConnectionWithURLRequest:(NSURLRequest *)aURLRequest target:(id)aTarget selector:(SEL)aSelector;
+
 // Accessors
 
 /**
