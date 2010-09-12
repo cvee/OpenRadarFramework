@@ -38,6 +38,7 @@
 @class NSMutableURLRequest;
 @class NSNumber;
 @class NSURL;
+@class NSURLRequest;
 
 @interface LPServiceRequest : NSObject {
 @private
@@ -62,7 +63,8 @@
 - (void)setTimeoutInterval:(NSTimeInterval)timeoutInterval;
 
 // Initialization
-- (id)initWithURL:(NSURL *)aRequestURL target:(id)aTarget selector:(SEL)aSelector;
+- (id)initWithURL:(NSURL *)anURL target:(id)aTarget selector:(SEL)aSelector;
+- (id)initWithURLRequest:(NSURLRequest *)anURLRequest target:(id)aTarget selector:(SEL)aSelector;
 
 // NSCopying Protocol
 - (id)copyWithZone:(NSZone *)zone;

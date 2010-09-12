@@ -60,20 +60,29 @@
 
     currentContentLength = [[NSNumber alloc] initWithUnsignedInteger:0];
     expectedContentLength = [[NSNumber alloc] initWithLongLong:NSURLResponseUnknownLength];
-    receivedData = [[NSMutableData alloc] init];
-    request = [[NSMutableURLRequest alloc] init];
 
     return self;
 }
 
-- (id)initWithURL:(NSURL *)aRequestURL target:(id)aTarget selector:(SEL)aSelector
+- (id)initWithURL:(NSURL *)anURL target:(id)aTarget selector:(SEL)aSelector
+{
+    if (!(self = [self initWithURLRequest:[NSMutableURLRequest requestWithURL:anURL] target:aTarget selector:aSelector]))
+    {
+        return nil;
+    }
+
+    return self;
+}
+
+- (id)initWithURLRequest:(NSURLRequest *)anURLRequest target:(id)aTarget selector:(SEL)aSelector;
 {
     if (!(self = [self init]))
     {
         return nil;
     }
 
-    [request setURL:aRequestURL];
+    receivedData = [[NSMutableData alloc] init];
+    request = [anURLRequest mutableCopy];
     target = aTarget;
     selector = aSelector;
 
