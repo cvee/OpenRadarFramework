@@ -44,6 +44,13 @@
  */
 @interface ORServiceClient : LPServiceClient {}
 
+/**
+ * @brief Submits a new radar.
+ *
+ * Use of this method requires authentication and write privileges.
+ *
+ * @param aRadar The radar.
+ */
 - (void)addRadar:(ORRadar *)aRadar;
 
 /**
@@ -79,31 +86,36 @@
 @optional
 
 /**
- * @method serviceClient:didFinishWithComments:
+ * @brief Sent when a client request initiated using [ORServiceClient addRadar:] has successfully finished.
+ *
+ * @param serviceClient The client instance that initiated the request.
+ * @param radarNumber A NSNumber instance.
+ */
+- (void)serviceClient:(ORServiceClient *)serviceClient addRadarDidFinishWithRadarNumber:(NSNumber *)radarNumber;
+
+/**
  * @brief Sent when a client request initiated using [ORServiceClient commentsForPage:] has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
  * @param comments A NSArray of ORComment objects.
  */
-- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithComments:(NSArray *)comments;
+- (void)serviceClient:(ORServiceClient *)serviceClient commentsForPageDidFinishWithComments:(NSArray *)comments;
 
 /**
- * @method serviceClient:didFinishWithRadars:
  * @brief Sent when a client request initiated using [ORServiceClient radarsForPage:] has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
  * @param radars A NSArray of ORRadar objects.
  */
-- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadars:(NSArray *)radars;
+- (void)serviceClient:(ORServiceClient *)serviceClient radarsForPageDidFinishWithRadars:(NSArray *)radars;
 
 /**
- * @method serviceClient:didFinishWithRadarNumbers:
  * @brief Sent when a client request initiated using [ORServiceClient radarNumbersForPage:] has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
  * @param radarNumbers A NSArray of NSNumber objects.
  */
-- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)radarNumbers;
+- (void)serviceClient:(ORServiceClient *)serviceClient radarNumbersForPageDidFinishWithRadarNumbers:(NSArray *)radarNumbers;
 
 @end
 

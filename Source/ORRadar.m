@@ -112,7 +112,7 @@ NSString *kORRadarUserEmail = @"userEmail";
     id aNumber = [aDictionary objectForKey:@"number"];
     if ([aNumber isKindOfClass:[NSNumber class]])
     {
-        number= [(NSNumber *)aNumber retain];
+        number = [(NSNumber *)aNumber retain];
     }
     else if ([aNumber isKindOfClass:[NSString class]])
     {

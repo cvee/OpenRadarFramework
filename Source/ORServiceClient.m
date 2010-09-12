@@ -72,11 +72,29 @@
 #pragma mark -
 #pragma mark Web Service Callbacks
 
-- (void)addRadarDidFinishWithResult:(NSDictionary *)result
+- (void)addRadarDidFinishWithResult:(NSDictionary *)aResult
 {
-    if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithResult:)])
+    NSNumber *radarNumber = nil;
+
+    NSLocale *locale = [[[NSLocale alloc]
+        initWithLocaleIdentifier:ORWebServiceLocaleIdentifier] autorelease];
+    NSNumberFormatter *numberFormatter =
+        [[[NSNumberFormatter alloc] init] autorelease];
+    [numberFormatter setLocale:locale];
+
+    id aNumber = [aResult objectForKey:@"number"];
+    if ([aNumber isKindOfClass:[NSNumber class]])
     {
-        [delegate serviceClient:self didFinishWithResult:result];
+        radarNumber = (NSNumber *)aNumber;
+    }
+    else if ([aNumber isKindOfClass:[NSString class]])
+    {
+        radarNumber = [[numberFormatter numberFromString:(NSString *)aNumber] retain];
+    }
+
+    if ([delegate respondsToSelector:@selector(serviceClient:addRadarDidFinishWithRadarNumber:)])
+    {
+        [delegate serviceClient:self addRadarDidFinishWithRadarNumber:radarNumber];
     }
 }
 
@@ -89,9 +107,9 @@
         [comments addObject:comment];
     }
 
-    if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithComments:)])
+    if ([delegate respondsToSelector:@selector(serviceClient:commentsForPageDidFinishWithComments:)])
     {
-        [delegate serviceClient:self didFinishWithComments:comments];
+        [delegate serviceClient:self commentsForPageDidFinishWithComments:comments];
     }
 }
 
@@ -104,9 +122,9 @@
         [radars addObject:radar];
     }
 
-    if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithRadars:)])
+    if ([delegate respondsToSelector:@selector(serviceClient:radarsForPageDidFinishWithRadars:)])
     {
-        [delegate serviceClient:self didFinishWithRadars:radars];
+        [delegate serviceClient:self radarsForPageDidFinishWithRadars:radars];
     }
 }
 
@@ -119,9 +137,9 @@
         [radarNumbers addObject:radarNumber];
     }
 
-    if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithRadarNumbers:)])
+    if ([delegate respondsToSelector:@selector(serviceClient:radarNumbersForPageDidFinishWithRadarNumbers:)])
     {
-        [delegate serviceClient:self didFinishWithRadarNumbers:radarNumbers];
+        [delegate serviceClient:self radarNumbersForPageDidFinishWithRadarNumbers:radarNumbers];
     }
 }
 
@@ -212,10 +230,26 @@
 
 - (void)addRadar:(ORRadar *)aRadar
 {
+    NSString *encodedParameters = [NSString stringWithFormat:
+        @"classification=%@&description=%@&number=%@&originated=%@&product=%@&product_version=%@&reproducible=%@&status=%@&title=%@",
+        [[aRadar classification] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar details] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[[aRadar number] stringValue] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar originated] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar product] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar productVersion] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar reproducible] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar status] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        [[aRadar title] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+    ];
+
     NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radars/add", ORBaseURLString];
-    [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
-                           target:self
-                         selector:@selector(addRadarDidFinishWithResult:)];
+    NSMutableURLRequest *aRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURLString]];
+    [aRequest setHTTPBody:[encodedParameters dataUsingEncoding:NSUTF8StringEncoding]];
+    [aRequest setHTTPMethod:@"POST"];
+    [self createConnectionWithURLRequest:aRequest
+                                  target:self
+                                selector:@selector(addRadarDidFinishWithResult:)];
 }
 
 - (void)commentsForPage:(NSUInteger)page
