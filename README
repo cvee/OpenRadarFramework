@@ -1,8 +1,12 @@
 Description
 
-OpenRadar is an Objective-C framework for interacting with the Open Radar project at http://openradar.appspot.com.
+OpenRadar.framework is an Objective-C framework for interacting with the Open Radar project at http://openradar.appspot.com.
 
 
 Acknowledgements
 
-OpenRadar makes use of the JSON framework (http://github.com/stig/json-framework) created by Stig Brautaset.
+OpenRadar.framework interacts with Open Radar created by Tim Burks
+http://openradar.appspot.com
+
+OpenRadar makes use of the JSON framework created by Stig Brautaset.
+http://github.com/stig/json-framework
