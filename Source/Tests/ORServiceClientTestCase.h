@@ -52,9 +52,6 @@
 - (void)testRadarsForPage;
 - (void)testRadarNumbersForPage;
 
-// Response Handlers
-- (void)radarsForPageDidFinishWithData:(NSData *)data error:(NSError *)error;
-
 @end
 
 FOUNDATION_EXPORT NSString * const kORServiceClientTestCaseEmail;

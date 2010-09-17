@@ -45,6 +45,7 @@ NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
 - (void)setUp
 {
     serviceClient = [[ORServiceClient alloc] init];
+    [serviceClient setDelegate:self];
 }
 
 - (void)tearDown
@@ -55,30 +56,36 @@ NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
 
 - (void)testCreate
 {
-    STAssertNotNil(serviceClient, @"ORServiceClient not created successfully.");
+    STAssertNotNil(serviceClient, @"%@ not created successfully.", [serviceClient className]);
 }
 
 - (void)testCommentsForPage
 {
     [serviceClient commentsForPage:1];
-    STAssertNil(nil, @"[ORServiceClient commentsForPage:] should be nil.");
+    STAssertNil(nil, @"[%@ commentsForPage:] should be nil.", [serviceClient className]);
+}
+
+- (void)testRadarForNumber
+{
+    [serviceClient radarForNumber:1];
+    STAssertNil(nil, @"[%@ radarsForPage:] should be nil.", [serviceClient className]);
 }
 
 - (void)testRadarsForPage
 {
     [serviceClient radarsForPage:1];
-    STAssertNil(nil, @"[ORServiceClient radarsForPage:] should be nil.");
+    STAssertNil(nil, @"[%@ radarsForPage:] should be nil.", [serviceClient className]);
 }
 
 - (void)testRadarNumbersForPage
 {
     [serviceClient radarNumbersForPage:1];
-    STAssertNil(nil, @"[ORServiceClient radarNumbersForPage:] should be nil.");
+    STAssertNil(nil, @"[%@ radarNumbersForPage:] should be nil.", [serviceClient className]);
 }
 
-- (void)radarsForPageDidFinishWithData:(NSData *)data error:(NSError *)error
+- (void)serviceClient:(ORServiceClient *)serviceClient radarNumbersForPageDidFinishWithRadarNumbers:(NSArray *)radarNumbers;
 {
-    STAssertNil(data, [NSString stringWithFormat:@"data: %@", data]);
+    STAssertNotNil(radarNumbers, [NSString stringWithFormat:@"data: %@", radarNumbers]);
 }
 
 @end
