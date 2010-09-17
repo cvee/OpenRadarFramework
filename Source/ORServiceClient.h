@@ -74,6 +74,14 @@
 - (void)radarsForPage:(NSUInteger)aPage;
 
 /**
+ * @brief Requests a list of radars for the specified user.
+ *
+ * @param anUserName The user name.
+ * @param aPage The page number.
+ */
+- (void)radarsForUserName:(NSString *)anUserName page:(NSUInteger)aPage;
+
+/**
  * @brief Requests a list of radar numbers for the specified page.
  *
  * @param aPage The page number.
@@ -120,6 +128,14 @@
  * @param aRadars A NSArray of ORRadar objects.
  */
 - (void)serviceClient:(ORServiceClient *)serviceClient radarsForPageDidFinishWithRadars:(NSArray *)aRadars;
+
+/**
+ * @brief Sent when a client request initiated using [ORServiceClient radarsForUserName:page:] has successfully finished.
+ *
+ * @param serviceClient The client instance that initiated the request.
+ * @param aRadars A NSArray of ORRadar objects.
+ */
+- (void)serviceClient:(ORServiceClient *)serviceClient radarsForUserNameDidFinishWithRadars:(NSArray *)aRadars;
 
 /**
  * @brief Sent when a client request initiated using [ORServiceClient radarNumbersForPage:] has successfully finished.

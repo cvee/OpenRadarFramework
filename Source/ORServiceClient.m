@@ -60,6 +60,7 @@
 - (void)commentsForPageDidFinishWithResult:(NSArray *)aResult;
 - (void)radarForNumberDidFinishWithResult:(NSDictionary *)aResult;
 - (void)radarsForPageDidFinishWithResult:(NSArray *)aResult;
+- (void)radarsForUserNameDidFinishWithResult:(NSArray *)aResult;
 - (void)radarNumbersForPageDidFinishWithResult:(NSArray *)aResult;
 - (void)searchForStringDidFinishWithResult:(NSArray *)aResult;
 - (void)testDidFinishWithResult:(NSDictionary *)aResult;
@@ -142,6 +143,21 @@
     if ([delegate respondsToSelector:@selector(serviceClient:radarsForPageDidFinishWithRadars:)])
     {
         [delegate serviceClient:self radarsForPageDidFinishWithRadars:radars];
+    }
+}
+
+- (void)radarsForUserNameDidFinishWithResult:(NSArray *)aResult
+{
+    NSMutableArray *radars = [NSMutableArray arrayWithCapacity:[aResult count]];
+    for (NSDictionary *radarDictionary in aResult)
+    {
+        ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
+        [radars addObject:radar];
+    }
+
+    if ([delegate respondsToSelector:@selector(serviceClient:radarsForUserNameDidFinishWithRadars:)])
+    {
+        [delegate serviceClient:self radarsForUserNameDidFinishWithRadars:radars];
     }
 }
 
@@ -312,12 +328,24 @@
                          selector:@selector(radarForNumberDidFinishWithResult:)];
 }
 
-- (void)radarsForPage:(NSUInteger)page
+- (void)radarsForPage:(NSUInteger)aPage
 {
-    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radars?page=%lu", ORBaseURLString, page];
+    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radar?page=%lu", ORBaseURLString, aPage];
     [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
                            target:self
                          selector:@selector(radarsForPageDidFinishWithResult:)];
+}
+
+- (void)radarsForUserName:(NSString *)anUserName page:(NSUInteger)aPage
+{
+    NSString *requestURLString = [NSString stringWithFormat:
+        @"%@/api/radar?user=%@&page=%lu",
+        ORBaseURLString,
+        [anUserName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+        aPage];
+    [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
+                           target:self
+                         selector:@selector(radarsForUserNameDidFinishWithResult:)];
 }
 
 - (void)radarNumbersForPage:(NSUInteger)page
