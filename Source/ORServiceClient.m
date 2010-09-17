@@ -58,6 +58,7 @@
 // Web Service Callbacks
 - (void)addRadarDidFinishWithResult:(NSDictionary *)result;
 - (void)commentsForPageDidFinishWithResult:(NSArray *)result;
+- (void)radarForNumberDidFinishWithResult:(NSDictionary *)result;
 - (void)radarsForPageDidFinishWithResult:(NSArray *)result;
 - (void)radarNumbersForPageDidFinishWithResult:(NSArray *)result;
 - (void)testDidFinishWithResult:(NSDictionary *)result;
@@ -94,7 +95,7 @@
 
     if ([delegate respondsToSelector:@selector(serviceClient:addRadarDidFinishWithRadarNumber:)])
     {
-        [delegate serviceClient:self addRadarDidFinishWithRadarNumber:radarNumber];
+        //[delegate serviceClient:self addRadarDidFinishWithRadarNumber:radarNumber];
     }
 }
 
@@ -110,6 +111,21 @@
     if ([delegate respondsToSelector:@selector(serviceClient:commentsForPageDidFinishWithComments:)])
     {
         [delegate serviceClient:self commentsForPageDidFinishWithComments:comments];
+    }
+}
+
+- (void)radarForNumberDidFinishWithResult:(NSDictionary *)result
+{
+    ORRadar *aRadar = nil;
+
+    if ([result count] > 0)
+    {
+        aRadar = [[[ORRadar alloc] initWithDictionary:result] autorelease];
+    }
+
+    if ([delegate respondsToSelector:@selector(serviceClient:radarForNumberDidFinishWithRadar:)])
+    {
+        [delegate serviceClient:self radarForNumberDidFinishWithRadar:aRadar];
     }
 }
 
@@ -204,6 +220,8 @@
 
 @implementation ORServiceClient
 
+@synthesize authorizationToken;
+
 #pragma mark -
 #pragma mark Initialization
 
@@ -222,12 +240,22 @@
 
 - (void)dealloc
 {
+    [authorizationToken release];
+    authorizationToken = nil;
+
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Web Services
 
+/**
+ * @brief Submits a new radar.
+ *
+ * Use of this method requires authentication and write privileges.
+ *
+ * @param aRadar The radar.
+ */
 - (void)addRadar:(ORRadar *)aRadar
 {
     NSString *encodedParameters = [NSString stringWithFormat:
@@ -243,7 +271,7 @@
         [[aRadar title] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
     ];
 
-    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radars/add", ORBaseURLString];
+    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radars/add?auth=%@", ORBaseURLString, [self authorizationToken]];
     NSMutableURLRequest *aRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURLString]];
     [aRequest setHTTPBody:[encodedParameters dataUsingEncoding:NSUTF8StringEncoding]];
     [aRequest setHTTPMethod:@"POST"];
@@ -258,6 +286,14 @@
     [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
                            target:self
                          selector:@selector(commentsForPageDidFinishWithResult:)];
+}
+
+- (void)radarForNumber:(NSUInteger)aNumber
+{
+    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radar?number=%lu", ORBaseURLString, aNumber];
+    [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
+                           target:self
+                         selector:@selector(radarForNumberDidFinishWithResult:)];
 }
 
 - (void)radarsForPage:(NSUInteger)page
