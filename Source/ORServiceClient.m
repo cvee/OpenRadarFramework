@@ -56,12 +56,13 @@
 @interface ORServiceClient (Private)
 
 // Web Service Callbacks
-- (void)addRadarDidFinishWithResult:(NSDictionary *)result;
-- (void)commentsForPageDidFinishWithResult:(NSArray *)result;
-- (void)radarForNumberDidFinishWithResult:(NSDictionary *)result;
-- (void)radarsForPageDidFinishWithResult:(NSArray *)result;
-- (void)radarNumbersForPageDidFinishWithResult:(NSArray *)result;
-- (void)testDidFinishWithResult:(NSDictionary *)result;
+- (void)addRadarDidFinishWithResult:(NSDictionary *)aResult;
+- (void)commentsForPageDidFinishWithResult:(NSArray *)aResult;
+- (void)radarForNumberDidFinishWithResult:(NSDictionary *)aResult;
+- (void)radarsForPageDidFinishWithResult:(NSArray *)aResult;
+- (void)radarNumbersForPageDidFinishWithResult:(NSArray *)aResult;
+- (void)searchForStringDidFinishWithResult:(NSArray *)aResult;
+- (void)testDidFinishWithResult:(NSDictionary *)aResult;
 
 // NSURLConnection Delegate
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
@@ -99,10 +100,10 @@
     }
 }
 
-- (void)commentsForPageDidFinishWithResult:(NSArray *)result
+- (void)commentsForPageDidFinishWithResult:(NSArray *)aResult
 {
-    NSMutableArray *comments = [NSMutableArray arrayWithCapacity:[result count]];
-    for (NSDictionary *commentDictionary in result)
+    NSMutableArray *comments = [NSMutableArray arrayWithCapacity:[aResult count]];
+    for (NSDictionary *commentDictionary in aResult)
     {
         ORComment *comment = [[[ORComment alloc] initWithDictionary:commentDictionary] autorelease];
         [comments addObject:comment];
@@ -114,13 +115,13 @@
     }
 }
 
-- (void)radarForNumberDidFinishWithResult:(NSDictionary *)result
+- (void)radarForNumberDidFinishWithResult:(NSDictionary *)aResult
 {
     ORRadar *aRadar = nil;
 
-    if ([result count] > 0)
+    if ([aResult count] > 0)
     {
-        aRadar = [[[ORRadar alloc] initWithDictionary:result] autorelease];
+        aRadar = [[[ORRadar alloc] initWithDictionary:aResult] autorelease];
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:radarForNumberDidFinishWithRadar:)])
@@ -129,10 +130,10 @@
     }
 }
 
-- (void)radarsForPageDidFinishWithResult:(NSArray *)result
+- (void)radarsForPageDidFinishWithResult:(NSArray *)aResult
 {
-    NSMutableArray *radars = [NSMutableArray arrayWithCapacity:[result count]];
-    for (NSDictionary *radarDictionary in result)
+    NSMutableArray *radars = [NSMutableArray arrayWithCapacity:[aResult count]];
+    for (NSDictionary *radarDictionary in aResult)
     {
         ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
         [radars addObject:radar];
@@ -144,10 +145,10 @@
     }
 }
 
-- (void)radarNumbersForPageDidFinishWithResult:(NSArray *)result
+- (void)radarNumbersForPageDidFinishWithResult:(NSArray *)aResult
 {
-    NSMutableArray *radarNumbers = [NSMutableArray arrayWithCapacity:[result count]];
-    for (NSString *radarNumberString in result)
+    NSMutableArray *radarNumbers = [NSMutableArray arrayWithCapacity:[aResult count]];
+    for (NSString *radarNumberString in aResult)
     {
         NSNumber *radarNumber = [NSDecimalNumber decimalNumberWithString:radarNumberString];
         [radarNumbers addObject:radarNumber];
@@ -159,11 +160,26 @@
     }
 }
 
-- (void)testDidFinishWithResult:(NSDictionary *)result
+- (void)searchForStringDidFinishWithResult:(NSArray *)aResult
+{
+    NSMutableArray *radars = [NSMutableArray arrayWithCapacity:[aResult count]];
+    for (NSDictionary *radarDictionary in aResult)
+    {
+        ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
+        [radars addObject:radar];
+    }
+
+    if ([delegate respondsToSelector:@selector(serviceClient:searchForStringDidFinishWithRadars:)])
+    {
+        [delegate serviceClient:self searchForStringDidFinishWithRadars:radars];
+    }
+}
+
+- (void)testDidFinishWithResult:(NSDictionary *)aResult
 {
     if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithResult:)])
     {
-        [delegate serviceClient:self didFinishWithResult:result];
+        [delegate serviceClient:self didFinishWithResult:aResult];
     }
 }
 
@@ -310,6 +326,18 @@
     [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
                            target:self
                          selector:@selector(radarNumbersForPageDidFinishWithResult:)];
+}
+
+- (void)searchForString:(NSString *)aString page:(NSUInteger)aPage
+{
+    NSString *requestURLString =
+        [NSString stringWithFormat:@"%@/api/search?query=%@&page=%lu",
+            ORBaseURLString,
+            [aString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+            aPage];
+    [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
+                           target:self
+                         selector:@selector(searchForStringDidFinishWithResult:)];
 }
 
 - (void)test
