@@ -106,6 +106,14 @@
 @optional
 
 /**
+ * @brief Sent when a client request has failed.
+ *
+ * @param serviceClient The client instance that initiated the request.
+ * @param error An error object containing details of why the client request failed.
+ */
+- (void)serviceClient:(LPServiceClient *)serviceClient didFailWithError:(NSError *)error;
+
+/**
  * @brief Sent when a client request initiated using [ORServiceClient commentsForPage:] has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
