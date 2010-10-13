@@ -107,27 +107,33 @@
     for (NSDictionary *commentDictionary in aResult)
     {
         ORComment *comment = [[[ORComment alloc] initWithDictionary:commentDictionary] autorelease];
-        [comments addObject:comment];
+        if (comment)
+        {
+            [comments addObject:comment];
+        }
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:commentsForPageDidFinishWithComments:)])
     {
-        [delegate serviceClient:self commentsForPageDidFinishWithComments:comments];
+        [delegate serviceClient:self didFinishWithComments:comments];
     }
 }
 
 - (void)radarForNumberDidFinishWithResult:(NSDictionary *)aResult
 {
-    ORRadar *aRadar = nil;
-
+    NSMutableArray *radars = [NSMutableArray array];
     if ([aResult count] > 0)
     {
-        aRadar = [[[ORRadar alloc] initWithDictionary:aResult] autorelease];
+        ORRadar *radar = [[[ORRadar alloc] initWithDictionary:aResult] autorelease];
+        if (radar)
+        {
+            [radars addObject:radar];
+        }
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:radarForNumberDidFinishWithRadar:)])
     {
-        [delegate serviceClient:self radarForNumberDidFinishWithRadar:aRadar];
+        [delegate serviceClient:self didFinishWithRadars:radars];
     }
 }
 
@@ -137,12 +143,15 @@
     for (NSDictionary *radarDictionary in aResult)
     {
         ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
-        [radars addObject:radar];
+        if (radar)
+        {
+            [radars addObject:radar];
+        }
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:radarsForPageDidFinishWithRadars:)])
     {
-        [delegate serviceClient:self radarsForPageDidFinishWithRadars:radars];
+        [delegate serviceClient:self didFinishWithRadars:radars];
     }
 }
 
@@ -152,12 +161,15 @@
     for (NSDictionary *radarDictionary in aResult)
     {
         ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
-        [radars addObject:radar];
+        if (radar)
+        {
+            [radars addObject:radar];
+        }
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:radarsForUserNameDidFinishWithRadars:)])
     {
-        [delegate serviceClient:self radarsForUserNameDidFinishWithRadars:radars];
+        [delegate serviceClient:self didFinishWithRadars:radars];
     }
 }
 
@@ -167,12 +179,15 @@
     for (NSString *radarNumberString in aResult)
     {
         NSNumber *radarNumber = [NSDecimalNumber decimalNumberWithString:radarNumberString];
-        [radarNumbers addObject:radarNumber];
+        if (radarNumber)
+        {
+            [radarNumbers addObject:radarNumber];
+        }
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:radarNumbersForPageDidFinishWithRadarNumbers:)])
     {
-        [delegate serviceClient:self radarNumbersForPageDidFinishWithRadarNumbers:radarNumbers];
+        [delegate serviceClient:self didFinishWithRadarNumbers:radarNumbers];
     }
 }
 
@@ -182,12 +197,15 @@
     for (NSDictionary *radarDictionary in aResult)
     {
         ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
-        [radars addObject:radar];
+        if (radar)
+        {
+            [radars addObject:radar];
+        }
     }
 
     if ([delegate respondsToSelector:@selector(serviceClient:searchForStringDidFinishWithRadars:)])
     {
-        [delegate serviceClient:self searchForStringDidFinishWithRadars:radars];
+        [delegate serviceClient:self didFinishWithRadars:radars];
     }
 }
 

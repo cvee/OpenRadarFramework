@@ -114,52 +114,28 @@
 - (void)serviceClient:(LPServiceClient *)serviceClient didFailWithError:(NSError *)error;
 
 /**
- * @brief Sent when a client request initiated using [ORServiceClient commentsForPage:] has successfully finished.
+ * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
  * @param aComments A NSArray of ORComment objects.
  */
-- (void)serviceClient:(ORServiceClient *)serviceClient commentsForPageDidFinishWithComments:(NSArray *)aComments;
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithComments:(NSArray *)aComments;
 
 /**
- * @brief Sent when a client request initiated using [ORServiceClient radarForNumber:] has successfully finished.
- *
- * @param serviceClient The client instance that initiated the request.
- * @param aRadar An ORRadar object.
- */
-- (void)serviceClient:(ORServiceClient *)serviceClient radarForNumberDidFinishWithRadar:(ORRadar *)aRadar;
-
-/**
- * @brief Sent when a client request initiated using [ORServiceClient radarsForPage:] has successfully finished.
+ * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
  * @param aRadars A NSArray of ORRadar objects.
  */
-- (void)serviceClient:(ORServiceClient *)serviceClient radarsForPageDidFinishWithRadars:(NSArray *)aRadars;
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadars:(NSArray *)aRadars;
 
 /**
- * @brief Sent when a client request initiated using [ORServiceClient radarsForUserName:page:] has successfully finished.
+ * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
  * @param aRadars A NSArray of ORRadar objects.
  */
-- (void)serviceClient:(ORServiceClient *)serviceClient radarsForUserNameDidFinishWithRadars:(NSArray *)aRadars;
-
-/**
- * @brief Sent when a client request initiated using [ORServiceClient radarNumbersForPage:] has successfully finished.
- *
- * @param serviceClient The client instance that initiated the request.
- * @param aRadarNumbers A NSArray of NSNumber objects.
- */
-- (void)serviceClient:(ORServiceClient *)serviceClient radarNumbersForPageDidFinishWithRadarNumbers:(NSArray *)aRadarNumbers;
-
-/**
- * @brief Sent when a client request initiated using [ORServiceClient searchForString:page:] has successfully finished.
- *
- * @param serviceClient The client instance that initiated the request.
- * @param aRadarNumbers A NSArray of ORRadar objects.
- */
-- (void)serviceClient:(ORServiceClient *)serviceClient searchForStringDidFinishWithRadars:(NSArray *)aRadars;
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)aRadarNumbers;
 
 @end
 
