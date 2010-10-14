@@ -32,6 +32,9 @@
 #ifndef ORSERVICEERROR_H
 #define ORSERVICEERROR_H
 
+#import <Foundation/NSObjCRuntime.h>
+
+
 @class NSString;
 
 /**

@@ -32,6 +32,7 @@
 
 #import <Foundation/NSDate.h>
 #import <Foundation/NSObject.h>
+#import <Foundation/NSURLRequest.h>
 
 
 @class NSMutableData;

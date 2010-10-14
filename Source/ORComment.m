@@ -31,6 +31,7 @@
 
 #import "ORComment.h"
 #import "ORConstants.h"
+#import <Foundation/NSCoder.h>
 #import <Foundation/NSDecimalNumber.h>
 #import <Foundation/NSDictionary.h>
 #import <Foundation/NSLocale.h>
@@ -82,7 +83,7 @@ NSString *kORCommentUserEmail = @"userEmail";
     }
     [self setBody:aBody];
 
-    id anIdentifier = [aDictionary valueForKey:@"id"];
+    id anIdentifier = [aDictionary objectForKey:@"id"];
     if ([anIdentifier isKindOfClass:[NSNumber class]])
     {
         identifier = [(NSNumber *)anIdentifier retain];
@@ -92,7 +93,7 @@ NSString *kORCommentUserEmail = @"userEmail";
         identifier = [[numberFormatter numberFromString:(NSString *)anIdentifier] retain];
     }
 
-    id aParentIdentifier = [aDictionary valueForKey:@"is_reply_to"];
+    id aParentIdentifier = [aDictionary objectForKey:@"is_reply_to"];
     if ([aParentIdentifier isKindOfClass:[NSNumber class]])
     {
         parentIdentifier = [(NSNumber *)aParentIdentifier retain];

@@ -32,6 +32,9 @@
 #ifndef ORCONSTANTS_H
 #define ORCONSTANTS_H
 
+#import <Foundation/NSObjCRuntime.h>
+
+
 @class NSString;
 
 

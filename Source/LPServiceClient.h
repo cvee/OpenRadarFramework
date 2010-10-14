@@ -35,10 +35,12 @@
 #import <Foundation/NSObject.h>
 
 
+@class NSDictionary;
 @class NSError;
 @class NSMutableDictionary;
 @class NSURL;
 @class NSURLConnection;
+@class NSURLRequest;
 @class LPServiceRequest;
 @protocol LPServiceClientDelegate;
 

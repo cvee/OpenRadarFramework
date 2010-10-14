@@ -31,6 +31,7 @@
 
 #import "ORRadar.h"
 #import "ORConstants.h"
+#import <Foundation/NSCoder.h>
 #import <Foundation/NSDecimalNumber.h>
 #import <Foundation/NSDictionary.h>
 #import <Foundation/NSLocale.h>
@@ -99,7 +100,7 @@ NSString *kORRadarUserEmail = @"userEmail";
         details = [(NSString *)aDetails retain];
     }
 
-    id anIdentifier = [aDictionary valueForKey:@"id"];
+    id anIdentifier = [aDictionary objectForKey:@"id"];
     if ([anIdentifier isKindOfClass:[NSNumber class]])
     {
         identifier = [(NSNumber *)anIdentifier retain];
