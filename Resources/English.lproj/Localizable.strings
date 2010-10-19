@@ -5,3 +5,48 @@
    Created by Chris Verwymeren on 10-06-04.
    Copyright 2010 Luna Park. All rights reserved.
  */
+
+"Always" = "Always";
+"App Store" = "App Store";
+"Behaves correctly" = "Behaves correctly";
+"Bug Reporter" = "Bug Reporter";
+"Closed" = "Closed";
+"Crash/Hang/Data Loss" = "Crash/Hang/Data Loss";
+"Developer Tools" = "Developer Tools";
+"Documentation" = "Documentation";
+"Duplicate" = "Duplicate";
+"Enhancement" = "Enhancement";
+"Feature (New)" = "Feature (New)";
+"Hardware" = "Hardware";
+"iApps" = "iApps";
+"iPad" = "iPad";
+"iPad SDK" = "iPad SDK";
+"iPhone/iPod touch" = "iPhone/iPod touch";
+"iPhone SDK" = "iPhone SDK";
+"iPod" = "iPod";
+"iWork" = "iWork";
+"I Didn't Try" = "I Didn't Try";
+"Insufficient Information" = "Insufficient Information";
+"Java" = "Java";
+"Mac OS X" = "Mac OS X";
+"Mac OS X Server" = "Mac OS X Server";
+"Mail" = "Mail";
+"Not Applicable" = "Not Applicable";
+"Open" = "Open";
+"Other" = "Other";
+"Other Bug" = "Other Bug";
+"Performance" = "Performance";
+"Power" = "Power";
+"Printing/Fax" = "Printing/Fax";
+"Pro Apps" = "Pro Apps";
+"QuickTime" = "QuickTime";
+"Rarely" = "Rarely";
+"Safari" = "Safari";
+"Sample Code" = "Sample Code";
+"Security" = "Security";
+"Serious Bug" = "Serious Bug";
+"Sometimes" = "Sometimes";
+"Tech Note/Q&A" = "Tech Note/Q&A";
+"Third Party to Resolve" = "Third Party to Resolve";
+"UI/Usability" = "UI/Usability";
+"Unable" = "Unable";
