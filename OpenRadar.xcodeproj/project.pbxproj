@@ -7,11 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF1640BC1266AE5D00EF887D /* LPServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC16E12368C2600A24F7B /* LPServiceClient.m */; };
+		EF1640BD1266AE5D00EF887D /* LPServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC17012368C2600A24F7B /* LPServiceRequest.m */; };
+		EF1640BE1266AE5D00EF887D /* ORComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC17712368C4A00A24F7B /* ORComment.m */; };
+		EF1640BF1266AE5D00EF887D /* ORConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC17912368C4A00A24F7B /* ORConstants.m */; };
+		EF1640C01266AE5D00EF887D /* ORRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC17B12368C4A00A24F7B /* ORRadar.m */; };
+		EF1640C11266AE5D00EF887D /* ORServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC17D12368C4A00A24F7B /* ORServiceClient.m */; };
+		EF1640C21266AE5D00EF887D /* ORServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC17F12368C4A00A24F7B /* ORServiceError.m */; };
+		EF1640C31266AE5D00EF887D /* ORServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC18112368C4A00A24F7B /* ORServiceRequest.m */; };
+		EF1640C41266AE5D00EF887D /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EF864A221236E67A00BADF42 /* NSObject+SBJSON.m */; };
+		EF1640C51266AE5D00EF887D /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EF864A241236E67A00BADF42 /* NSString+SBJSON.m */; };
+		EF1640C61266AE5D00EF887D /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF864A261236E67A00BADF42 /* SBJsonBase.m */; };
+		EF1640C71266AE5D00EF887D /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EF864A281236E67A00BADF42 /* SBJsonParser.m */; };
+		EF1640C81266AE5D00EF887D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF864A2A1236E67A00BADF42 /* SBJsonWriter.m */; };
+		EF1640CA1266AE6F00EF887D /* LPServiceClient.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC16D12368C2600A24F7B /* LPServiceClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF1640CB1266AE6F00EF887D /* LPServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC16F12368C2600A24F7B /* LPServiceRequest.h */; };
+		EF1640CC1266AE6F00EF887D /* OpenRadar.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC17512368C4A00A24F7B /* OpenRadar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF1640CD1266AE6F00EF887D /* ORComment.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC17612368C4A00A24F7B /* ORComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF1640CE1266AE6F00EF887D /* ORConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC17812368C4A00A24F7B /* ORConstants.h */; };
+		EF1640CF1266AE6F00EF887D /* ORRadar.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC17A12368C4A00A24F7B /* ORRadar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF1640D01266AE6F00EF887D /* ORServiceClient.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC17C12368C4A00A24F7B /* ORServiceClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF1640D11266AE6F00EF887D /* ORServiceError.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC17E12368C4A00A24F7B /* ORServiceError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF1640D21266AE6F00EF887D /* ORServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC18012368C4A00A24F7B /* ORServiceRequest.h */; };
+		EF1640D31266AE6F00EF887D /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A201236E67A00BADF42 /* JSON.h */; };
+		EF1640D41266AE6F00EF887D /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A211236E67A00BADF42 /* NSObject+SBJSON.h */; };
+		EF1640D51266AE6F00EF887D /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A231236E67A00BADF42 /* NSString+SBJSON.h */; };
+		EF1640D61266AE6F00EF887D /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A251236E67A00BADF42 /* SBJsonBase.h */; };
+		EF1640D71266AE6F00EF887D /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A271236E67A00BADF42 /* SBJsonParser.h */; };
+		EF1640D81266AE6F00EF887D /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A291236E67A00BADF42 /* SBJsonWriter.h */; };
 		EF51600C118E788300BBBF7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF51600B118E788300BBBF7A /* Foundation.framework */; };
 		EF516050118E792C00BBBF7A /* OpenRadar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* OpenRadar.framework */; };
 		EF7AC16712368BB000A24F7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7AC16112368BB000A24F7B /* InfoPlist.strings */; };
 		EF7AC16812368BB000A24F7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7AC16312368BB000A24F7B /* Localizable.strings */; };
-		EF7AC16C12368BEB00A24F7B /* OpenRadar_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC16B12368BEB00A24F7B /* OpenRadar_Prefix.pch */; };
 		EF7AC17112368C2600A24F7B /* LPServiceClient.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC16D12368C2600A24F7B /* LPServiceClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF7AC17212368C2600A24F7B /* LPServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC16E12368C2600A24F7B /* LPServiceClient.m */; };
 		EF7AC17312368C2600A24F7B /* LPServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EF7AC16F12368C2600A24F7B /* LPServiceRequest.h */; };
@@ -55,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		8DC2EF5B0486A6940098B216 /* OpenRadar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenRadar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF1640B91266ADF900EF887D /* libopenradar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libopenradar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF515DA1118E34A100BBBF7A /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		EF515DA2118E34A100BBBF7A /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		EF515DA3118E34A100BBBF7A /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -106,6 +134,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF1640B71266ADF900EF887D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EF515EA8118E77CA00BBBF7A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,6 +157,7 @@
 			children = (
 				8DC2EF5B0486A6940098B216 /* OpenRadar.framework */,
 				EF515EAB118E77CA00BBBF7A /* OpenRadar Unit Tests.octest */,
+				EF1640B91266ADF900EF887D /* libopenradar.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,7 +306,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF7AC16C12368BEB00A24F7B /* OpenRadar_Prefix.pch in Headers */,
 				EF7AC17112368C2600A24F7B /* LPServiceClient.h in Headers */,
 				EF7AC17312368C2600A24F7B /* LPServiceRequest.h in Headers */,
 				EF7AC18212368C4A00A24F7B /* OpenRadar.h in Headers */,
@@ -286,6 +321,28 @@
 				EF864A301236E67A00BADF42 /* SBJsonBase.h in Headers */,
 				EF864A321236E67A00BADF42 /* SBJsonParser.h in Headers */,
 				EF864A341236E67A00BADF42 /* SBJsonWriter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1640B51266ADF900EF887D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF1640CA1266AE6F00EF887D /* LPServiceClient.h in Headers */,
+				EF1640CB1266AE6F00EF887D /* LPServiceRequest.h in Headers */,
+				EF1640CC1266AE6F00EF887D /* OpenRadar.h in Headers */,
+				EF1640CD1266AE6F00EF887D /* ORComment.h in Headers */,
+				EF1640CE1266AE6F00EF887D /* ORConstants.h in Headers */,
+				EF1640CF1266AE6F00EF887D /* ORRadar.h in Headers */,
+				EF1640D01266AE6F00EF887D /* ORServiceClient.h in Headers */,
+				EF1640D11266AE6F00EF887D /* ORServiceError.h in Headers */,
+				EF1640D21266AE6F00EF887D /* ORServiceRequest.h in Headers */,
+				EF1640D31266AE6F00EF887D /* JSON.h in Headers */,
+				EF1640D41266AE6F00EF887D /* NSObject+SBJSON.h in Headers */,
+				EF1640D51266AE6F00EF887D /* NSString+SBJSON.h in Headers */,
+				EF1640D61266AE6F00EF887D /* SBJsonBase.h in Headers */,
+				EF1640D71266AE6F00EF887D /* SBJsonParser.h in Headers */,
+				EF1640D81266AE6F00EF887D /* SBJsonWriter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +367,23 @@
 			productName = OpenRadar;
 			productReference = 8DC2EF5B0486A6940098B216 /* OpenRadar.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		EF1640B81266ADF900EF887D /* openradar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF1640DB1266AEB800EF887D /* Build configuration list for PBXNativeTarget "openradar" */;
+			buildPhases = (
+				EF1640B51266ADF900EF887D /* Headers */,
+				EF1640B61266ADF900EF887D /* Sources */,
+				EF1640B71266ADF900EF887D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = openradar;
+			productName = libopenradar;
+			productReference = EF1640B91266ADF900EF887D /* libopenradar.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		EF515EAA118E77CA00BBBF7A /* OpenRadar Unit Tests */ = {
 			isa = PBXNativeTarget;
@@ -354,6 +428,7 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* OpenRadar */,
+				EF1640B81266ADF900EF887D /* openradar */,
 				EF515EAA118E77CA00BBBF7A /* OpenRadar Unit Tests */,
 			);
 		};
@@ -412,6 +487,26 @@
 				EF864A311236E67A00BADF42 /* SBJsonBase.m in Sources */,
 				EF864A331236E67A00BADF42 /* SBJsonParser.m in Sources */,
 				EF864A351236E67A00BADF42 /* SBJsonWriter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1640B61266ADF900EF887D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF1640BC1266AE5D00EF887D /* LPServiceClient.m in Sources */,
+				EF1640BD1266AE5D00EF887D /* LPServiceRequest.m in Sources */,
+				EF1640BE1266AE5D00EF887D /* ORComment.m in Sources */,
+				EF1640BF1266AE5D00EF887D /* ORConstants.m in Sources */,
+				EF1640C01266AE5D00EF887D /* ORRadar.m in Sources */,
+				EF1640C11266AE5D00EF887D /* ORServiceClient.m in Sources */,
+				EF1640C21266AE5D00EF887D /* ORServiceError.m in Sources */,
+				EF1640C31266AE5D00EF887D /* ORServiceRequest.m in Sources */,
+				EF1640C41266AE5D00EF887D /* NSObject+SBJSON.m in Sources */,
+				EF1640C51266AE5D00EF887D /* NSString+SBJSON.m in Sources */,
+				EF1640C61266AE5D00EF887D /* SBJsonBase.m in Sources */,
+				EF1640C71266AE5D00EF887D /* SBJsonParser.m in Sources */,
+				EF1640C81266AE5D00EF887D /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +619,40 @@
 			};
 			name = Release;
 		};
+		EF1640BA1266ADF900EF887D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = NO;
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
+				PRODUCT_NAME = openradar;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF1640BB1266ADF900EF887D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
+				PRODUCT_NAME = openradar;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		EF515EAD118E77CB00BBBF7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -597,6 +726,15 @@
 			buildConfigurations = (
 				1DEB91B208733DA50010E9CD /* Debug */,
 				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF1640DB1266AEB800EF887D /* Build configuration list for PBXNativeTarget "openradar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF1640BA1266ADF900EF887D /* Debug */,
+				EF1640BB1266ADF900EF887D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
