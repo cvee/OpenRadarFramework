@@ -32,9 +32,20 @@
 #ifndef OPENRADAR_H
 #define OPENRADAR_H
 
+#if TARGET_OS_IPHONE
+
+#import "ORComment.h"
+#import "ORRadar.h"
+#import "ORServiceClient.h"
+#import "ORServiceError.h"
+
+#else
+
 #import <OpenRadar/ORComment.h>
 #import <OpenRadar/ORRadar.h>
 #import <OpenRadar/ORServiceClient.h>
 #import <OpenRadar/ORServiceError.h>
+
+#endif
 
 #endif
