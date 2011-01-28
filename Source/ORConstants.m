@@ -1,5 +1,5 @@
 //
-//  ORConstants.h
+//  ORConstants.m
 //
 //  Copyright (c) 2010, Luna Park
 //  All rights reserved.
@@ -33,5 +33,14 @@
 #import <Foundation/NSString.h>
 
 
+#ifdef TARGET_SERVER_LOCALHOST
+
+NSString * const ORBaseURLString = @"http://localhost:8080";
+
+#else
+
 NSString * const ORBaseURLString = @"http://openradar.appspot.com";
+
+#endif
+
 NSString * const ORWebServiceLocaleIdentifier = @"en_US";
