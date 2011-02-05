@@ -8,5 +8,10 @@ Acknowledgements
 OpenRadar.framework interacts with Open Radar created by Tim Burks
 http://openradar.appspot.com
 
-OpenRadar makes use of the JSON framework created by Stig Brautaset.
+OpenRadar makes use of the following code:
+
+JSON framework created by Stig Brautaset.
 http://github.com/stig/json-framework
+
+GHUnit framework created by Gabriel Handford
+https://github.com/gabriel/gh-unit
