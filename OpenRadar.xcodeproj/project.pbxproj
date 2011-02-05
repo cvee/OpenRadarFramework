@@ -68,9 +68,27 @@
 		EF864A351236E67A00BADF42 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF864A2A1236E67A00BADF42 /* SBJsonWriter.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EF4A58C712FCFAE300074072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* GHUnit.framework */;
+			remoteInfo = GHUnit;
+		};
+		EF4A58C912FCFAE300074072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 002E73B60F2C213700427636 /* Tests.app */;
+			remoteInfo = Tests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8DC2EF5B0486A6940098B216 /* OpenRadar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenRadar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1640B91266ADF900EF887D /* libopenradar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libopenradar.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GHUnit.xcodeproj; path = "External/Projects/gh-unit/Project/GHUnit.xcodeproj"; sourceTree = "<group>"; };
 		EF515DA1118E34A100BBBF7A /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		EF515DA2118E34A100BBBF7A /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		EF515DA3118E34A100BBBF7A /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -147,6 +165,7 @@
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				EF4A58B912FCF96F00074072 /* External Projects */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				EF7AC19E12368D9A00A24F7B /* Tests */,
 			);
@@ -223,6 +242,23 @@
 				EF7AC17012368C2600A24F7B /* LPServiceRequest.m */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		EF4A58B912FCF96F00074072 /* External Projects */ = {
+			isa = PBXGroup;
+			children = (
+				EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */,
+			);
+			name = "External Projects";
+			sourceTree = "<group>";
+		};
+		EF4A58BF12FCFAE300074072 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF4A58C812FCFAE300074072 /* GHUnit.framework */,
+				EF4A58CA12FCFAE300074072 /* Tests.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EF515DA0118E34A100BBBF7A /* Configurations */ = {
@@ -382,6 +418,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* OpenRadar */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EF4A58BF12FCFAE300074072 /* Products */;
+					ProjectRef = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* OpenRadar */,
@@ -389,6 +431,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EF4A58C812FCFAE300074072 /* GHUnit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GHUnit.framework;
+			remoteRef = EF4A58C712FCFAE300074072 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF4A58CA12FCFAE300074072 /* Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Tests.app;
+			remoteRef = EF4A58C912FCFAE300074072 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8DC2EF520486A6940098B216 /* Resources */ = {
