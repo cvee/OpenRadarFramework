@@ -1,5 +1,5 @@
 //
-//  ORSwitchboardTestCase.m
+//  ORServiceClientTestCase.m
 //
 //  Copyright (c) 2010, Luna Park
 //  All rights reserved.
@@ -31,9 +31,11 @@
 
 #import "ORServiceClientTestCase.h"
 #import "ORServiceClient.h"
+#import "ORConstants.h"
 #import <Foundation/NSData.h>
 #import <Foundation/NSError.h>
 #import <Foundation/NSString.h>
+#import <Foundation/NSThread.h>
 
 
 NSString *const kORServiceClientTestCaseEmail = @"user@example.com";
@@ -41,6 +43,11 @@ NSString *const kORServiceClientTestCaseName = @"user";
 NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
 
 @implementation ORServiceClientTestCase
+
+- (BOOL)shouldRunOnMainThread
+{
+    return YES;
+}
 
 - (void)setUp
 {
@@ -56,36 +63,87 @@ NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
 
 - (void)testCreate
 {
-    STAssertNotNil(serviceClient, @"%@ not created successfully.", [serviceClient className]);
+    GHAssertNotNil(serviceClient, @"%@ object was not created successfully.", [serviceClient className]);
 }
 
 - (void)testCommentsForPage
 {
+    [self prepare];
+
     [serviceClient commentsForPage:1];
-    STAssertNil(nil, @"[%@ commentsForPage:] should be nil.", [serviceClient className]);
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 }
 
 - (void)testRadarForNumber
 {
-    [serviceClient radarForNumber:1];
-    STAssertNil(nil, @"[%@ radarsForPage:] should be nil.", [serviceClient className]);
-}
+    [self prepare];
 
-- (void)testRadarsForPage
-{
-    [serviceClient radarsForPage:1];
-    STAssertNil(nil, @"[%@ radarsForPage:] should be nil.", [serviceClient className]);
+    [serviceClient radarForNumber:1];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 }
 
 - (void)testRadarNumbersForPage
 {
+    [self prepare];
+
     [serviceClient radarNumbersForPage:1];
-    STAssertNil(nil, @"[%@ radarNumbersForPage:] should be nil.", [serviceClient className]);
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 }
 
-- (void)serviceClient:(ORServiceClient *)serviceClient radarNumbersForPageDidFinishWithRadarNumbers:(NSArray *)radarNumbers;
+- (void)testRadarsForPage
 {
-    STAssertNotNil(radarNumbers, [NSString stringWithFormat:@"data: %@", radarNumbers]);
+    [self prepare];
+
+    [serviceClient radarsForPage:1];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 }
 
+- (void)testRadarsForUserName
+{
+    [self prepare];
+
+    [serviceClient radarsForUserName:kORServiceClientTestCaseEmail page:1];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+}
+
+- (void)testSearch
+{
+    [self prepare];
+
+    [serviceClient searchForString:kORServiceClientTestCaseEmail page:1];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+}
+
+#pragma mark -
+#pragma mark ORServiceClientDelegate
+
+- (void)serviceClient:(LPServiceClient *)serviceClient didFailWithError:(NSError *)error;
+{
+    [self notify:kGHUnitWaitStatusFailure forSelector:NULL];
+}
+
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithComments:(NSArray *)aComments;
+{
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testCommentsForPage)];
+}
+
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadars:(NSArray *)aRadars
+{
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarForNumber)];
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarsForPage)];
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarsForUserName)];
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testSearch)];
+}
+
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)aRadarNumbers;
+{
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarNumbersForPage)];
+}
+ 
 @end

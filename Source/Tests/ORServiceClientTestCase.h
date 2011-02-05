@@ -1,5 +1,5 @@
 //
-//  ORSwitchboardTestCase.h
+//  ORServiceClientTestCase.h
 //
 //  Copyright (c) 2010, Luna Park
 //  All rights reserved.
@@ -32,7 +32,7 @@
 #ifndef ORSERVICECLIENTTESTCASE_H
 #define ORSERVICECLIENTTESTCASE_H
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <GHUnit/GHUnit.h>
 
 
 @class ORServiceClient;
@@ -40,7 +40,7 @@
 @class NSError;
 @class NSString;
 
-@interface ORServiceClientTestCase : SenTestCase
+@interface ORServiceClientTestCase : GHAsyncTestCase
 {
     ORServiceClient *serviceClient;
 }
@@ -49,8 +49,11 @@
 - (void)tearDown;
 - (void)testCreate;
 - (void)testCommentsForPage;
-- (void)testRadarsForPage;
+- (void)testRadarForNumber;
 - (void)testRadarNumbersForPage;
+- (void)testRadarsForPage;
+- (void)testRadarsForUserName;
+- (void)testSearch;
 
 @end
 

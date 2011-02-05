@@ -35,6 +35,12 @@
 		EF1640D61266AE6F00EF887D /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A251236E67A00BADF42 /* SBJsonBase.h */; };
 		EF1640D71266AE6F00EF887D /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A271236E67A00BADF42 /* SBJsonParser.h */; };
 		EF1640D81266AE6F00EF887D /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = EF864A291236E67A00BADF42 /* SBJsonWriter.h */; };
+		EF4A58E012FCFD1200074072 /* GHUnit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EF4A58C812FCFAE300074072 /* GHUnit.framework */; };
+		EF4A58E112FCFD1900074072 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4A58C812FCFAE300074072 /* GHUnit.framework */; };
+		EF4A58E912FCFEBD00074072 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4A58E812FCFEBD00074072 /* GHUnitTestMain.m */; };
+		EF4A58EB12FCFEF000074072 /* ORServiceClientTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AC1A012368D9A00A24F7B /* ORServiceClientTestCase.m */; };
+		EF4A58FC12FCFF5C00074072 /* OpenRadar.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* OpenRadar.framework */; };
+		EF4A590212FCFF7C00074072 /* OpenRadar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* OpenRadar.framework */; };
 		EF51600C118E788300BBBF7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF51600B118E788300BBBF7A /* Foundation.framework */; };
 		EF7AC16712368BB000A24F7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7AC16112368BB000A24F7B /* InfoPlist.strings */; };
 		EF7AC16812368BB000A24F7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7AC16312368BB000A24F7B /* Localizable.strings */; };
@@ -83,12 +89,44 @@
 			remoteGlobalIDString = 002E73B60F2C213700427636 /* Tests.app */;
 			remoteInfo = Tests;
 		};
+		EF4A58DC12FCFCB900074072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* GHUnit */;
+			remoteInfo = GHUnit;
+		};
+		EF4A58FF12FCFF7000074072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* OpenRadar */;
+			remoteInfo = OpenRadar;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EF4A58E412FCFD2200074072 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EF4A58E012FCFD1200074072 /* GHUnit.framework in Copy Frameworks */,
+				EF4A58FC12FCFF5C00074072 /* OpenRadar.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8DC2EF5B0486A6940098B216 /* OpenRadar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenRadar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1640B91266ADF900EF887D /* libopenradar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libopenradar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GHUnit.xcodeproj; path = "External/Projects/gh-unit/Project/GHUnit.xcodeproj"; sourceTree = "<group>"; };
+		EF4A58D612FCFCA600074072 /* OpenRadarGHUnitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenRadarGHUnitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4A58D812FCFCA600074072 /* OpenRadarGHUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenRadarGHUnitTests-Info.plist"; sourceTree = "<group>"; };
+		EF4A58E812FCFEBD00074072 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHUnitTestMain.m; path = "External/Projects/gh-unit/Classes-MacOSX/GHUnitTestMain.m"; sourceTree = SOURCE_ROOT; };
 		EF515DA1118E34A100BBBF7A /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		EF515DA2118E34A100BBBF7A /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		EF515DA3118E34A100BBBF7A /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -145,6 +183,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF4A58D412FCFCA600074072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF4A58E112FCFD1900074072 /* GHUnit.framework in Frameworks */,
+				EF4A590212FCFF7C00074072 /* OpenRadar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -153,6 +200,7 @@
 			children = (
 				8DC2EF5B0486A6940098B216 /* OpenRadar.framework */,
 				EF1640B91266ADF900EF887D /* libopenradar.a */,
+				EF4A58D612FCFCA600074072 /* OpenRadarGHUnitTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,6 +216,7 @@
 				EF4A58B912FCF96F00074072 /* External Projects */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				EF7AC19E12368D9A00A24F7B /* Tests */,
+				EF4A58D812FCFCA600074072 /* OpenRadarGHUnitTests-Info.plist */,
 			);
 			name = OpenRadar;
 			sourceTree = "<group>";
@@ -285,6 +334,7 @@
 		EF7AC19E12368D9A00A24F7B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				EF4A58E812FCFEBD00074072 /* GHUnitTestMain.m */,
 				EF7AC19F12368D9A00A24F7B /* ORServiceClientTestCase.h */,
 				EF7AC1A012368D9A00A24F7B /* ORServiceClientTestCase.m */,
 			);
@@ -397,6 +447,26 @@
 			productReference = EF1640B91266ADF900EF887D /* libopenradar.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		EF4A58D512FCFCA600074072 /* OpenRadarGHUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF4A58DB12FCFCA700074072 /* Build configuration list for PBXNativeTarget "OpenRadarGHUnitTests" */;
+			buildPhases = (
+				EF4A58D212FCFCA600074072 /* Resources */,
+				EF4A58D312FCFCA600074072 /* Sources */,
+				EF4A58D412FCFCA600074072 /* Frameworks */,
+				EF4A58E412FCFD2200074072 /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF4A58DD12FCFCB900074072 /* PBXTargetDependency */,
+				EF4A590012FCFF7000074072 /* PBXTargetDependency */,
+			);
+			name = OpenRadarGHUnitTests;
+			productName = OpenRadarGHUnitTests;
+			productReference = EF4A58D612FCFCA600074072 /* OpenRadarGHUnitTests.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -428,6 +498,7 @@
 			targets = (
 				8DC2EF4F0486A6940098B216 /* OpenRadar */,
 				EF1640B81266ADF900EF887D /* openradar */,
+				EF4A58D512FCFCA600074072 /* OpenRadarGHUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -456,6 +527,13 @@
 			files = (
 				EF7AC16712368BB000A24F7B /* InfoPlist.strings in Resources */,
 				EF7AC16812368BB000A24F7B /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF4A58D212FCFCA600074072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +580,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF4A58D312FCFCA600074072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF4A58E912FCFEBD00074072 /* GHUnitTestMain.m in Sources */,
+				EF4A58EB12FCFEF000074072 /* ORServiceClientTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF4A58DD12FCFCB900074072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GHUnit;
+			targetProxy = EF4A58DC12FCFCB900074072 /* PBXContainerItemProxy */;
+		};
+		EF4A590012FCFF7000074072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* OpenRadar */;
+			targetProxy = EF4A58FF12FCFF7000074072 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EF7AC16112368BB000A24F7B /* InfoPlist.strings */ = {
@@ -629,6 +729,56 @@
 			};
 			name = Release;
 		};
+		EF4A58D912FCFCA700074072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "OpenRadarGHUnitTests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(CONTENTS_FOLDER_PATH)/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenRadarGHUnitTests;
+			};
+			name = Debug;
+		};
+		EF4A58DA12FCFCA700074072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "OpenRadarGHUnitTests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(CONTENTS_FOLDER_PATH)/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenRadarGHUnitTests;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -655,6 +805,15 @@
 			buildConfigurations = (
 				EF1640BA1266ADF900EF887D /* Debug */,
 				EF1640BB1266ADF900EF887D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF4A58DB12FCFCA700074072 /* Build configuration list for PBXNativeTarget "OpenRadarGHUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF4A58D912FCFCA700074072 /* Debug */,
+				EF4A58DA12FCFCA700074072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
