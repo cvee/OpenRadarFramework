@@ -67,6 +67,13 @@
 - (void)radarForNumber:(NSUInteger)aNumber;
 
 /**
+ * @brief Requests a list of radar numbers for the specified page.
+ *
+ * @param aPage The page number.
+ */
+- (void)radarNumbersForPage:(NSUInteger)aPage;
+
+/**
  * @brief Requests a list of radars for the specified page.
  *
  * @param aPage The page number.
@@ -80,13 +87,6 @@
  * @param aPage The page number.
  */
 - (void)radarsForUserName:(NSString *)anUserName page:(NSUInteger)aPage;
-
-/**
- * @brief Requests a list of radar numbers for the specified page.
- *
- * @param aPage The page number.
- */
-- (void)radarNumbersForPage:(NSUInteger)aPage;
 
 /**
  * @brief Requests a list of radars whose contents contain the specified string.
