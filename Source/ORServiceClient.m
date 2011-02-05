@@ -56,8 +56,8 @@
 @interface ORServiceClient (Private)
 
 // Web Service Callbacks
-- (void)addRadarDidFinishWithResult:(NSDictionary *)aResult;
 - (void)commentsForPageDidFinishWithResult:(NSArray *)aResult;
+- (void)postRadarDidFinishWithResult:(NSDictionary *)aResult;
 - (void)radarForNumberDidFinishWithResult:(NSDictionary *)aResult;
 - (void)radarsForPageDidFinishWithResult:(NSArray *)aResult;
 - (void)radarsForUserNameDidFinishWithResult:(NSArray *)aResult;
@@ -75,32 +75,6 @@
 #pragma mark -
 #pragma mark Web Service Callbacks
 
-- (void)addRadarDidFinishWithResult:(NSDictionary *)aResult
-{
-    NSNumber *radarNumber = nil;
-
-    NSLocale *locale = [[[NSLocale alloc]
-        initWithLocaleIdentifier:ORWebServiceLocaleIdentifier] autorelease];
-    NSNumberFormatter *numberFormatter =
-        [[[NSNumberFormatter alloc] init] autorelease];
-    [numberFormatter setLocale:locale];
-
-    id aNumber = [aResult objectForKey:@"number"];
-    if ([aNumber isKindOfClass:[NSNumber class]])
-    {
-        radarNumber = (NSNumber *)aNumber;
-    }
-    else if ([aNumber isKindOfClass:[NSString class]])
-    {
-        radarNumber = [[numberFormatter numberFromString:(NSString *)aNumber] retain];
-    }
-
-    if ([delegate respondsToSelector:@selector(serviceClient:addRadarDidFinishWithRadarNumber:)])
-    {
-        //[delegate serviceClient:self addRadarDidFinishWithRadarNumber:radarNumber];
-    }
-}
-
 - (void)commentsForPageDidFinishWithResult:(NSArray *)aResult
 {
     NSMutableArray *comments = [NSMutableArray arrayWithCapacity:[aResult count]];
@@ -116,6 +90,24 @@
     if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithComments:)])
     {
         [delegate serviceClient:self didFinishWithComments:comments];
+    }
+}
+
+- (void)postRadarDidFinishWithResult:(NSDictionary *)aResult
+{
+    NSMutableArray *radars = [NSMutableArray arrayWithCapacity:[aResult count]];
+    for (NSDictionary *radarDictionary in aResult)
+    {
+        ORRadar *radar = [[[ORRadar alloc] initWithDictionary:radarDictionary] autorelease];
+        if (radar)
+        {
+            [radars addObject:radar];
+        }
+    }
+
+    if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithRadars:)])
+    {
+        [delegate serviceClient:self didFinishWithRadars:radars];
     }
 }
 
@@ -299,43 +291,70 @@
 #pragma mark -
 #pragma mark Web Services
 
-/**
- * @brief Submits a new radar.
- *
- * Use of this method requires authentication and write privileges.
- *
- * @param aRadar The radar.
- */
-- (void)addRadar:(ORRadar *)aRadar
-{
-    NSString *encodedParameters = [NSString stringWithFormat:
-        @"classification=%@&description=%@&number=%@&originated=%@&product=%@&product_version=%@&reproducible=%@&status=%@&title=%@",
-        [[aRadar classification] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar details] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[[aRadar number] stringValue] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar originated] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar product] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar productVersion] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar reproducible] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar status] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-        [[aRadar title] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-    ];
-
-    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radars/add?auth=%@", ORBaseURLString, [self authorizationToken]];
-    NSMutableURLRequest *aRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURLString]];
-    [aRequest setHTTPBody:[encodedParameters dataUsingEncoding:NSUTF8StringEncoding]];
-    [aRequest setHTTPMethod:@"POST"];
-    [self createConnectionWithURLRequest:aRequest
-                                  target:self
-                                selector:@selector(addRadarDidFinishWithResult:)];
-}
-
 - (void)commentsForPage:(NSUInteger)page
 {
     NSString *requestURLString = [NSString stringWithFormat:@"%@/api/comments?page=%lu", ORBaseURLString, page];
     [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
                            target:self
                          selector:@selector(commentsForPageDidFinishWithResult:)];
+}
+
+- (void)postRadar:(ORRadar *)aRadar
+{
+    NSMutableString *encodedParameters = [NSMutableString string];
+
+    if ([aRadar classification] != nil)
+    {
+        [encodedParameters appendFormat:@"classification=%@&", [[aRadar classification] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar details] != nil)
+    {
+        [encodedParameters appendFormat:@"description=%@&", [[aRadar details] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar number] != nil)
+    {
+        [encodedParameters appendFormat:@"number=%@&", [[[aRadar number] stringValue] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar originated] != nil)
+    {
+        [encodedParameters appendFormat:@"originated=%@&", [[aRadar originated] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar product] != nil)
+    {
+        [encodedParameters appendFormat:@"product=%@&", [[aRadar product] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar productVersion] != nil)
+    {
+        [encodedParameters appendFormat:@"product_version=%@&", [[aRadar productVersion] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar reproducible] != nil)
+    {
+        [encodedParameters appendFormat:@"reproducible=%@&", [[aRadar reproducible] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar status] != nil)
+    {
+        [encodedParameters appendFormat:@"status=%@&", [[aRadar status] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    if ([aRadar title] != nil)
+    {
+        [encodedParameters appendFormat:@"title=%@&", [[aRadar title] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radar?auth=%@", ORBaseURLString, [self authorizationToken]];
+    NSMutableURLRequest *aRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURLString]];
+    [aRequest setHTTPBody:[encodedParameters dataUsingEncoding:NSUTF8StringEncoding]];
+    [aRequest setHTTPMethod:@"POST"];
+    [self createConnectionWithURLRequest:aRequest
+                                  target:self
+                                selector:@selector(postRadarDidFinishWithResult:)];
 }
 
 - (void)radarForNumber:(NSUInteger)aNumber

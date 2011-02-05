@@ -60,6 +60,15 @@
 - (void)commentsForPage:(NSUInteger)aPage;
 
 /**
+ * @brief Submits a radar.
+ *
+ * Use of this method requires authentication and write privileges.
+ *
+ * @param aRadar The radar.
+ */
+- (void)postRadar:(ORRadar *)aRadar;
+
+/**
  * @brief Requests the radar matching for the specified number.
  *
  * @param aNumber The radar number.
