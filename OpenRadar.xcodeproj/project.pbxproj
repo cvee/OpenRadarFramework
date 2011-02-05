@@ -79,28 +79,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* GHUnit.framework */;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = GHUnit;
 		};
 		EF4A58C912FCFAE300074072 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 002E73B60F2C213700427636 /* Tests.app */;
+			remoteGlobalIDString = 002E73B60F2C213700427636;
 			remoteInfo = Tests;
 		};
 		EF4A58DC12FCFCB900074072 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF4A58BE12FCFAE300074072 /* GHUnit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* GHUnit */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = GHUnit;
 		};
 		EF4A58FF12FCFF7000074072 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* OpenRadar */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = OpenRadar;
 		};
 /* End PBXContainerItemProxy section */
@@ -642,7 +642,7 @@
 				GCC_PREFIX_HEADER = Source/OpenRadar_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "@loader_path/../Frameworks";
+				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = OpenRadar;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -661,7 +661,7 @@
 				GCC_PREFIX_HEADER = Source/OpenRadar_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "@loader_path/../Frameworks";
+				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = OpenRadar;
 				WRAPPER_EXTENSION = framework;
 			};
