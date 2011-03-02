@@ -160,7 +160,7 @@
  * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
- * @param aRadars An NSArray of ORRadar objects.
+ * @param aRadarNumbers An NSArray of NSNumber objects.
  */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)aRadarNumbers;
 
