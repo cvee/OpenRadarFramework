@@ -38,9 +38,7 @@
 #import <Foundation/NSThread.h>
 
 
-NSString *const kORServiceClientTestCaseEmail = @"user@example.com";
-NSString *const kORServiceClientTestCaseName = @"user";
-NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
+NSString *const kORServiceClientTestCaseEmail = @"test@example.com";
 
 @implementation ORServiceClientTestCase
 
@@ -66,11 +64,29 @@ NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
     GHAssertNotNil(serviceClient, @"%@ object was not created successfully.", [serviceClient className]);
 }
 
+- (void)testCommentCount
+{
+    [self prepare];
+
+    [serviceClient commentCount];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+}
+
 - (void)testCommentsForPage
 {
     [self prepare];
 
     [serviceClient commentsForPage:1];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+}
+
+- (void)testRadarCount
+{
+    [self prepare];
+
+    [serviceClient radarCount];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 }
@@ -130,20 +146,22 @@ NSString *const kORServiceClientTestCaseSigningKey = @"aoifwiejfeiwoij29309283";
 
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithComments:(NSArray *)aComments;
 {
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testCommentsForPage)];
+    [self notify:kGHUnitWaitStatusSuccess forSelector:[self currentSelector]];
+}
+
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithNumber:(NSNumber *)aNumber;
+{
+	[self notify:kGHUnitWaitStatusSuccess forSelector:[self currentSelector]];
 }
 
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadars:(NSArray *)aRadars
 {
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarForNumber)];
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarsForPage)];
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarsForUserName)];
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testSearch)];
+    [self notify:kGHUnitWaitStatusSuccess forSelector:[self currentSelector]];
 }
 
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)aRadarNumbers;
 {
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testRadarNumbersForPage)];
+    [self notify:kGHUnitWaitStatusSuccess forSelector:[self currentSelector]];
 }
  
 @end

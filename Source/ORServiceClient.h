@@ -53,6 +53,11 @@
 @property (nonatomic, copy) NSString *authorizationToken;
 
 /**
+ * @brief Requests the total number of available comment.
+ */
+- (void)commentCount;
+
+/**
  * @brief Requests a list of comments for the specified page.
  *
  * @param aPage The page number.
@@ -67,6 +72,11 @@
  * @param aRadar The radar.
  */
 - (void)postRadar:(ORRadar *)aRadar;
+
+/**
+ * @brief Requests the total number of available radars.
+ */
+- (void)radarCount;
 
 /**
  * @brief Requests the radar matching for the specified number.
@@ -126,7 +136,7 @@
  * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
- * @param aComments A NSArray of ORComment objects.
+ * @param aComments An NSArray of ORComment objects.
  */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithComments:(NSArray *)aComments;
 
@@ -134,7 +144,15 @@
  * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
- * @param aRadars A NSArray of ORRadar objects.
+ * @param aNumber An NSNumber.
+ */
+- (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithNumber:(NSNumber *)aNumber;
+
+/**
+ * @brief Sent when a client request has successfully finished.
+ *
+ * @param serviceClient The client instance that initiated the request.
+ * @param aRadars An NSArray of ORRadar objects.
  */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadars:(NSArray *)aRadars;
 
@@ -142,7 +160,7 @@
  * @brief Sent when a client request has successfully finished.
  *
  * @param serviceClient The client instance that initiated the request.
- * @param aRadars A NSArray of ORRadar objects.
+ * @param aRadars An NSArray of ORRadar objects.
  */
 - (void)serviceClient:(ORServiceClient *)serviceClient didFinishWithRadarNumbers:(NSArray *)aRadarNumbers;
 

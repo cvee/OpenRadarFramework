@@ -48,7 +48,9 @@
 - (void)setUp;
 - (void)tearDown;
 - (void)testCreate;
+- (void)testCommentCount;
 - (void)testCommentsForPage;
+- (void)testRadarCount;
 - (void)testRadarForNumber;
 - (void)testRadarNumbersForPage;
 - (void)testRadarsForPage;
@@ -58,7 +60,5 @@
 @end
 
 FOUNDATION_EXPORT NSString * const kORServiceClientTestCaseEmail;
-FOUNDATION_EXPORT NSString * const kORServiceClientTestCaseName;
-FOUNDATION_EXPORT NSString * const kORServiceClientTestCaseSigningKey;
 
 #endif

@@ -56,8 +56,10 @@
 @interface ORServiceClient (Private)
 
 // Web Service Callbacks
+- (void)commentCountDidFinishWithResult:(NSNumber *)aResult;
 - (void)commentsForPageDidFinishWithResult:(NSArray *)aResult;
 - (void)postRadarDidFinishWithResult:(NSDictionary *)aResult;
+- (void)radarCountDidFinishWithResult:(NSNumber *)aResult;
 - (void)radarForNumberDidFinishWithResult:(NSDictionary *)aResult;
 - (void)radarsForPageDidFinishWithResult:(NSArray *)aResult;
 - (void)radarsForUserNameDidFinishWithResult:(NSArray *)aResult;
@@ -74,6 +76,14 @@
 
 #pragma mark -
 #pragma mark Web Service Callbacks
+
+- (void)commentCountDidFinishWithResult:(NSNumber *)aResult
+{
+	if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithNumber:)])
+    {
+        [delegate serviceClient:self didFinishWithNumber:aResult];
+    }
+}
 
 - (void)commentsForPageDidFinishWithResult:(NSArray *)aResult
 {
@@ -108,6 +118,14 @@
     if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithRadars:)])
     {
         [delegate serviceClient:self didFinishWithRadars:radars];
+    }
+}
+
+- (void)radarCountDidFinishWithResult:(NSNumber *)aResult
+{
+    if ([delegate respondsToSelector:@selector(serviceClient:didFinishWithNumber:)])
+    {
+        [delegate serviceClient:self didFinishWithNumber:aResult];
     }
 }
 
@@ -291,6 +309,14 @@
 #pragma mark -
 #pragma mark Web Services
 
+- (void)commentCount
+{
+    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/comment/count", ORBaseURLString];
+    [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
+                           target:self
+                         selector:@selector(commentCountDidFinishWithResult:)];
+}
+
 - (void)commentsForPage:(NSUInteger)page
 {
     NSString *requestURLString = [NSString stringWithFormat:@"%@/api/comments?page=%lu", ORBaseURLString, page];
@@ -355,6 +381,14 @@
     [self createConnectionWithURLRequest:aRequest
                                   target:self
                                 selector:@selector(postRadarDidFinishWithResult:)];
+}
+
+- (void)radarCount
+{
+    NSString *requestURLString = [NSString stringWithFormat:@"%@/api/radar/count", ORBaseURLString];
+    [self createConnectionWithURL:[NSURL URLWithString:requestURLString]
+                           target:self
+                         selector:@selector(radarCountDidFinishWithResult:)];
 }
 
 - (void)radarForNumber:(NSUInteger)aNumber
