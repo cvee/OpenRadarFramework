@@ -36,6 +36,7 @@
 
 
 @class NSArray;
+@class NSNumber;
 @class ORRadar;
 @protocol ORServiceClientDelegate;
 

@@ -709,7 +709,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
 				PRODUCT_NAME = openradar;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -725,7 +725,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
 				PRODUCT_NAME = openradar;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/openradar;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
 			};
