@@ -3,6 +3,11 @@ Description
 OpenRadar.framework is an Objective-C framework for interacting with the Open Radar project at http://openradar.appspot.com.
 
 
+Requirements
+
+OpenRadar.framework targets Mac OS X 10.5.8+ and iOS 4.2+.
+
+
 Acknowledgements
 
 OpenRadar.framework interacts with Open Radar created by Tim Burks
