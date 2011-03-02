@@ -49,3 +49,33 @@
 #endif
 
 #endif
+
+/**
+ * @mainpage OpenRadar.framework
+ *
+ * @section section_introduction Introduction
+ *
+ * OpenRadar.framework is an Objective-C framework for interacting with the 
+ * Open Radar project at http://openradar.appspot.com
+ *
+ * @section section_requirements Requirements
+ *
+ * OpenRadar.framework targets Mac OS X 10.5.8+ and iOS 4.2+.
+ *
+ * @section section_acknowledgements Acknowledgements
+ *
+ * OpenRadar.framework interacts with Open Radar created by Tim Burks.
+ *
+ * http://openradar.appspot.com
+ *
+ * OpenRadar makes use of the following code:
+ *
+ * JSON framework created by Stig Brautaset.
+ *
+ * http://github.com/stig/json-framework
+ *
+ * GHUnit framework created by Gabriel Handford
+ *
+ * https://github.com/gabriel/gh-unit
+ *
+ */
